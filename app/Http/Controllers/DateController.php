@@ -19,6 +19,18 @@ class DateController extends Controller {
         $calculateNumerology = new CalculateNumerology();
         $userDetails = $calculateNumerology->breakDate($date);
 
+        if ($user->is_admin) {
+            $dateObject = new \DateTime($date);
+            // Format the date as MM/DD/YYYY
+            $formattedDate = $dateObject->format('m/d/Y');
+
+            Mail::to($user->email)->send(new UserReadingEmail($user, $userDetails, $formattedDate, $creditsRemaining = 'unlimited'));
+
+
+            return Inertia::render('Reading', [
+                'userDetails' => $userDetails,
+            ]);
+        }
         $request->user()->credits -= 1;
         $request->user()->save();
         $creditsRemaining = $request->user()->credits;
