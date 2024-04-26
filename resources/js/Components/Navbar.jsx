@@ -10,7 +10,8 @@ import {
 } from "@heroicons/react/24/outline";
 import Dropdown from "@/Components/Dropdown";
 // import Logo from "@/assets/logo.png";
-import { useThemeStore } from "@/store/themeStore"; // Adjust the import path
+import Logo from "@/images/logo.png";
+import { useThemeStore } from "@/store/themeStore";
 
 export default function Navbar() {
     // const [darkMode, setDarkMode] = useState(false);
@@ -56,8 +57,8 @@ export default function Navbar() {
                         href="/"
                         className="-m-1.5 p-1.5 text-white dark:text-gray-300"
                     >
-                        GG33 AutoRead
-                        {/* <img className="h-20 w-auto" src={Logo} alt="" /> */}
+                        {/* GG33 AutoRead */}
+                        <img className="h-10 w-auto" src={Logo} alt="logo" />
                     </Link>
                 </div>
                 <div className="flex lg:hidden">

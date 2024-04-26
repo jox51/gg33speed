@@ -18,7 +18,7 @@ export default function Pricing() {
                     <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                         Purchase Your Numerology Reading
                     </h2>
-                    <p className="mt-6 text-lg text-green-300 leading-8">
+                    <p className="mt-6 text-lg text-green-600 dark:text-green-300 leading-8">
                         Discover personalized insights with a one-time detailed
                         reading based on GG33 knowledge.
                     </p>
