@@ -28,6 +28,8 @@ function ReadingDetails() {
     const { payment, userDetails, auth } = usePage().props;
     const loading = useLoadingStore((state) => state.loading);
 
+    console.log("userDetails", userDetails);
+
     const loadingStateChange = (val) => {
         useLoadingStore.setState({ loading: val });
     };
@@ -94,12 +96,12 @@ function ReadingDetails() {
                             description={userDetails.reading.ChineseZodiac}
                             icon={userDetails.zodiacEmoji}
                         />
-                        <Card1
+                        {/* <Card1
                             className="bg-green-100"
                             heading={`Western Zodiac: ${userDetails.westernZodiac}`}
                             description={userDetails.todaysHoroscope}
                             icon={userDetails.westZodiacEmoji}
-                        />
+                        /> */}
                     </>
                 ) : null}
             </div>
