@@ -41,7 +41,7 @@ export default function Navbar() {
             return [
                 // { name: "Reading", href: "/reading" },
                 { name: "Features", href: "#features" },
-                { name: "About Us", href: "#" },
+                { name: "About Us", href: "/about" },
             ];
         }
     }
