@@ -12,13 +12,13 @@ export default function Pricing() {
     const { auth } = usePage().props; // Retrieves auth object from page props
 
     return (
-        <div className="bg-gradient-to-r from-gray-200 to-gray-400 dark:bg-gradient-to-r dark:from-gray-600 dark:to-gray-800 py-24 sm:py-32">
+        <div className="bg-gradient-to-r from-slate-300 to-slate-600 dark:bg-gradient-to-r dark:from-gray-500 dark:to-gray-800 py-24 sm:py-32">
             <div className="mx-auto max-w-6xl px-6 lg:px-8">
-                <div className="mx-auto text-green-500 max-w-2xl sm:text-center">
+                <div className="mx-auto text-gray-800 dark:text-green-500 max-w-2xl sm:text-center">
                     <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                         Purchase Your Numerology Reading
                     </h2>
-                    <p className="mt-6 text-lg text-green-600 dark:text-green-300 leading-8">
+                    <p className="mt-6 text-lg text-gray-800 dark:text-green-300 leading-8">
                         Discover personalized insights with a one-time detailed
                         reading based on GG33 knowledge.
                     </p>
