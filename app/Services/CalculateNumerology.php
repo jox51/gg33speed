@@ -182,26 +182,39 @@ class CalculateNumerology {
 
   public function getTodaysHoroscope($zodiac) {
     $api_key = getenv("RAPID_API_KEY");
-    $url = getenv("HOROSCOPE_URL");
+    $url = getenv("HOROSCOPE_URL"); // Make sure this includes the full base URL
     $host = getenv("HOROSCOPE_API_HOST");
+
+    // Ensure that the URL is properly formatted before making the request
+    if (empty($url) || empty($zodiac)) {
+      return ['error' => 'URL or Zodiac sign is not provided.'];
+    }
+
+    // $fullUrl = rtrim($url, '/') . "/?zodiacSign={$zodiac}&timePeriod=today"; // Ensure proper URL formatting
+    $fullUrl = rtrim($url, '/') . '?zodiacSign=' . urlencode($zodiac) . '&timePeriod=today';
+
 
     $response = Http::withHeaders([
       'X-RapidAPI-Key' => $api_key,
       'X-RapidAPI-Host' => $host,
-    ])->get($url, ['zodiacSign' => $zodiac, 'timePeriod' => 'today']);
+    ])
+      ->timeout(10)
+      ->retry(3, 5000, function ($exception) {
+        return $exception instanceof \GuzzleHttp\Exception\ConnectException;
+      })
+      ->get($fullUrl);
+
 
     if ($response->successful()) {
-
       $responseFromApi = $response->json();
       $horoscope = $responseFromApi['prediction'];
-
-
       return $horoscope;
     } else {
       // Handle error or return an empty array/error message
       return ['error' => 'Failed to fetch horoscope. Please try again later.'];
     }
   }
+
 
   public function getWesternZodiacEmoji($zodiac) {
 
