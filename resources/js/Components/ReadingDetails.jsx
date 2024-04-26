@@ -7,9 +7,7 @@ import {
 } from "react-icons/gi";
 import { usePage } from "@inertiajs/react";
 import DatePickerComponent from "./DatePickerComponent";
-// import { BallTriangle } from "react-loader-spinner";
-import pkg from "react-loader-spinner";
-const { BallTriangle } = pkg;
+import { BallTriangle } from "react-loader-spinner";
 import { useLoadingStore } from "@/store/loadingStore";
 
 function Card1({ heading, description, icon, className }) {
