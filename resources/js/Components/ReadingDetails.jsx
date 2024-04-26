@@ -72,13 +72,12 @@ function ReadingDetails() {
             {/* Show loading indicator only when loading is true */}
             {loading && <BallTriangle height={80} width={80} />}
 
-            <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-3 sm:p-8">
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 p-3 sm:p-8">
                 {/* Numerology Cards */}
-
                 {userDetails && !loading ? (
                     <>
                         <Card1
-                            className="bg-blue-100"
+                            className="bg-green-100"
                             heading={`Lifepath Number ${userDetails.lifepath}`}
                             description={userDetails.reading.Lifepath}
                             icon={userDetails.lifepathEmoji}
@@ -90,14 +89,21 @@ function ReadingDetails() {
                             icon={userDetails.borndayEmoji}
                         />
                         <Card1
-                            className="bg-green-100"
+                            className="bg-[#fefaf0]"
                             heading={`Chinese Zodiac: ${userDetails.zodiac}`}
                             description={userDetails.reading.ChineseZodiac}
                             icon={userDetails.zodiacEmoji}
                         />
+                        <Card1
+                            className="bg-green-100"
+                            heading={`Western Zodiac: ${userDetails.westernZodiac}`}
+                            description={userDetails.todaysHoroscope}
+                            icon={userDetails.westZodiacEmoji}
+                        />
                     </>
                 ) : null}
             </div>
+
             {userDetails && !loading && (
                 <div className="bg-blue-200 text-blue-900 text-center p-4 rounded-lg mt-4 max-w-4xl">
                     <p>

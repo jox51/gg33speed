@@ -45,12 +45,12 @@ export default function Features() {
                             Explore Your Numerology
                         </h2>
                         <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-                            Unlock the Secrets of the Stars
+                            Unlock the Secrets of the Elite
                         </p>
                         <p className="mt-6 text-lg leading-8">
-                            Gain profound insights into your life with our
-                            cutting-edge numerology tools. Explore your
-                            horoscope, birth chart, and more.
+                            Gain profound insights into your life with GG33
+                            official speed reading. Explore your horoscope and
+                            numerological profile.
                         </p>
                     </div>
                 </div>

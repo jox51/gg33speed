@@ -35,13 +35,13 @@ export default function Navbar() {
             return [
                 { name: "Reading", href: "/reading" },
                 { name: "Features", href: "#features" },
-                { name: "About Me", href: "#" },
+                { name: "About Me", href: "/about" },
             ];
         } else {
             return [
                 // { name: "Reading", href: "/reading" },
                 { name: "Features", href: "#features" },
-                { name: "About Me", href: "#" },
+                { name: "About Us", href: "#" },
             ];
         }
     }

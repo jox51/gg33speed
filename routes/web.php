@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReadingController;
+use App\Http\Controllers\StandardPagesController;
 use App\Http\Middleware\CheckPaidStatus;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,12 @@ Route::middleware('auth')->group(function () {
 Route::get('/pay', [PaymentController::class, 'create'])->name('payment');
 Route::get('/approval', [PaymentController::class, 'approval'])->name('approval');
 Route::get('/', [PaymentController::class, 'cancel'])->name('cancel');
+
+Route::get('/terms', [StandardPagesController::class, 'terms'])->name('terms');
+Route::get('/privacy', [StandardPagesController::class, 'privacy'])->name('privacy');
+Route::get('/contact', [StandardPagesController::class, 'contact'])->name('contact');
+Route::get('/about', [StandardPagesController::class, 'about'])->name('about');
+Route::get('/refund', [StandardPagesController::class, 'refund'])->name('refund');
 
 
 Route::middleware(CheckPaidStatus::class)->group(function () {

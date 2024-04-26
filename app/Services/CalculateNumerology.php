@@ -5,7 +5,11 @@ namespace App\Services;
 use App\Http\Utils\CalculationUtils;
 use App\Http\Utils\ZodiacUtils;
 use App\Models\Numerology;
+use Illuminate\Support\Facades\Http;
 use OpenAI;
+use Intervention\Zodiac\Calculator;
+use Jawira\EmojiCatalog\Emoji;
+
 
 class CalculateNumerology {
 
@@ -13,6 +17,11 @@ class CalculateNumerology {
 
     $dateBirthdayParts = explode('-', $date);
     list($birthYear, $birthMonth, $birthDay) = $dateBirthdayParts;
+
+    $westernZodiac = $this->getWesternZodiac($date);
+    $zodiacFormatted = ucfirst(strtolower($westernZodiac));
+    $zodiacEmoji = $this->getWesternZodiacEmoji($zodiacFormatted);
+    $todaysHorscope = $this->getTodaysHoroscope($westernZodiac);
 
     $userDetails = $this->calculateLifePathNumber($birthYear, $birthMonth, $birthDay);
 
@@ -22,7 +31,7 @@ class CalculateNumerology {
     $bornday = $userDetails['bornday'];
     $zodiac = $userDetails['zodiac'];
 
-    return ['reading' => $reading, 'lifepath' => $lifepath, 'bornday' => $bornday, 'zodiac' => $zodiac, 'lifepathEmoji' => $userDetails['lifepathEmoji'], 'borndayEmoji' => $userDetails['borndayEmoji'], 'zodiacEmoji' => $userDetails['zodiacEmoji']];
+    return ['reading' => $reading, 'lifepath' => $lifepath, 'bornday' => $bornday, 'zodiac' => $zodiac, 'lifepathEmoji' => $userDetails['lifepathEmoji'], 'borndayEmoji' => $userDetails['borndayEmoji'], 'zodiacEmoji' => $userDetails['zodiacEmoji'], 'westernZodiac' => $zodiacFormatted, 'todaysHoroscope' => $todaysHorscope, 'westZodiacEmoji' => $zodiacEmoji];
   }
 
   public function calculateLifePathNumber($birthYear, $birthMonth, $birthDay) {
@@ -162,5 +171,62 @@ class CalculateNumerology {
     $prompt .= "ChineseZodiac: $zodiacSentence\n";
 
     return $prompt;
+  }
+
+  public function getWesternZodiac($date) {
+    $calculator = new Calculator();
+    $zodiac = $calculator->make($date)->name();
+
+    return $zodiac;
+  }
+
+  public function getTodaysHoroscope($zodiac) {
+    $api_key = getenv("RAPID_API_KEY");
+    $url = getenv("HOROSCOPE_URL");
+    $host = getenv("HOROSCOPE_API_HOST");
+
+    $response = Http::withHeaders([
+      'X-RapidAPI-Key' => $api_key,
+      'X-RapidAPI-Host' => $host,
+    ])->get($url, ['zodiacSign' => $zodiac, 'timePeriod' => 'today']);
+
+    if ($response->successful()) {
+
+      $responseFromApi = $response->json();
+      $horoscope = $responseFromApi['prediction'];
+
+
+      return $horoscope;
+    } else {
+      // Handle error or return an empty array/error message
+      return ['error' => 'Failed to fetch horoscope. Please try again later.'];
+    }
+  }
+
+  public function getWesternZodiacEmoji($zodiac) {
+
+    $zodiacEmojiMap = $this->getZodiacEmojiMap();
+    if (array_key_exists($zodiac, $zodiacEmojiMap)) {
+      return $zodiacEmojiMap[$zodiac];
+    }
+
+    return '🔮';
+  }
+
+  public function getZodiacEmojiMap() {
+    return [
+      'Aries' => Emoji::ARIES,
+      'Taurus' => Emoji::TAURUS,
+      'Gemini' => Emoji::GEMINI,
+      'Cancer' => Emoji::CANCER,
+      'Leo' => Emoji::LEO,
+      'Virgo' => Emoji::VIRGO,
+      'Libra' => Emoji::LIBRA,
+      'Scorpio' => Emoji::SCORPIO,
+      'Sagittarius' => Emoji::SAGITTARIUS,
+      'Capricorn' => Emoji::CAPRICORN,
+      'Aquarius' => Emoji::AQUARIUS,
+      'Pisces' => Emoji::PISCES
+    ];
   }
 }

@@ -18,13 +18,13 @@ const Hero = () => {
                         <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
                             <a
                                 className="inline-flex h-12 items-center justify-center rounded-md bg-white px-6 text-sm font-medium text-gray-800  shadow-lg transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-purple-500"
-                                href="#"
+                                href="#pricing"
                             >
                                 Get Started
                             </a>
                             <a
                                 className="inline-flex h-12 items-center justify-center rounded-md bg-transparent border border-white px-6 text-sm font-medium text-white shadow-lg transition-colors hover:bg-white hover:text-purple-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-purple-500"
-                                href="#"
+                                href="#features"
                             >
                                 Learn More
                             </a>

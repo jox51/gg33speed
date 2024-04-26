@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf3b1474d2a87d187ac2868e36fdeafb",
+    "content-hash": "3c4affff0aca64a36dbf6f7e673526e2",
     "packages": [
         {
             "name": "brick/math",
@@ -1119,6 +1119,138 @@
                 }
             ],
             "time": "2024-03-09T00:30:58+00:00"
+        },
+        {
+            "name": "intervention/zodiac",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/zodiac.git",
+                "reference": "9e6a00918f5630cb0a18cea8a536180d64153b74"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/zodiac/zipball/9e6a00918f5630cb0a18cea8a536180d64153b74",
+                "reference": "9e6a00918f5630cb0a18cea8a536180d64153b74",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/translation": "^6|^7|^8|^9|^10|^11",
+                "nesbot/carbon": "^2.0|^3.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1",
+                "phpunit/phpunit": "^10.0",
+                "slevomat/coding-standard": "~8.0",
+                "squizlabs/php_codesniffer": "^3.8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Intervention\\Zodiac\\Laravel\\ZodiacServiceProvider"
+                    ],
+                    "aliases": {
+                        "Zodiac": "Intervention\\Zodiac\\Laravel\\ZodiacFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Zodiac\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@intervention.io",
+                    "homepage": "https://intervention.io/"
+                }
+            ],
+            "description": "Zodiac sign calculator",
+            "homepage": "https://zodiac.intervention.io",
+            "keywords": [
+                "astrology",
+                "birthday",
+                "horoscope",
+                "star sign",
+                "sun sign",
+                "zodiac"
+            ],
+            "support": {
+                "issues": "https://github.com/Intervention/zodiac/issues",
+                "source": "https://github.com/Intervention/zodiac/tree/4.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/interventionio",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Intervention",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-03T09:22:59+00:00"
+        },
+        {
+            "name": "jawira/emoji-catalog",
+            "version": "v15.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jawira/emoji-catalog.git",
+                "reference": "c618556427fdc361e0fef75277bf35e169725f44"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jawira/emoji-catalog/zipball/c618556427fdc361e0fef75277bf35e169725f44",
+                "reference": "c618556427fdc361e0fef75277bf35e169725f44",
+                "shasum": ""
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2.28",
+                "ext-intl": "*",
+                "ext-mbstring": "*",
+                "jawira/skeleton": "^2.16",
+                "phing/phing": "^2.17 || ^3",
+                "php": "^7.3 || ^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jawira\\EmojiCatalog\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jawira Portugal",
+                    "email": "dev@tugal.be"
+                }
+            ],
+            "description": "Get access to +3600 emojis as class constants",
+            "keywords": [
+                "catalog",
+                "emoji",
+                "emojis",
+                "emoticons",
+                "smileys",
+                "smilies",
+                "unicode"
+            ],
+            "support": {
+                "issues": "https://github.com/jawira/emoji-catalog/issues",
+                "source": "https://github.com/jawira/emoji-catalog/tree/v15.1.0"
+            },
+            "time": "2024-01-29T10:09:23+00:00"
         },
         {
             "name": "laravel/framework",

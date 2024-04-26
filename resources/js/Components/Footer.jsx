@@ -4,15 +4,15 @@ export default function Footer() {
     const navigation = [
         {
             name: "Terms of Service",
-            href: "#",
+            href: "/terms",
         },
         {
             name: "Privacy Policy",
-            href: "#",
+            href: "/privacy",
         },
         {
             name: "Contact Us",
-            href: "#",
+            href: "contact",
         },
     ];
 
