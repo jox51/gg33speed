@@ -190,10 +190,6 @@ class CalculateNumerology {
       return ['error' => 'URL or Zodiac sign is not provided.'];
     }
 
-    // $fullUrl = rtrim($url, '/') . "/?zodiacSign={$zodiac}&timePeriod=today"; // Ensure proper URL formatting
-    $fullUrl = rtrim($url, '/') . '?zodiacSign=' . urlencode($zodiac) . '&timePeriod=today';
-
-
     $response = Http::withHeaders([
       'X-RapidAPI-Key' => $api_key,
       'X-RapidAPI-Host' => $host,
@@ -202,12 +198,14 @@ class CalculateNumerology {
       ->retry(3, 5000, function ($exception) {
         return $exception instanceof \GuzzleHttp\Exception\ConnectException;
       })
-      ->get($fullUrl);
-
+      ->get($url, ['zodiacSign' => $zodiac, 'timePeriod' => 'today']);
 
     if ($response->successful()) {
+
       $responseFromApi = $response->json();
       $horoscope = $responseFromApi['prediction'];
+
+
       return $horoscope;
     } else {
       // Handle error or return an empty array/error message
