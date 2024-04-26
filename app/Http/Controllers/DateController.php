@@ -24,7 +24,7 @@ class DateController extends Controller {
             // Format the date as MM/DD/YYYY
             $formattedDate = $dateObject->format('m/d/Y');
 
-            Mail::to($user->email)->send(new UserReadingEmail($user, $userDetails, $formattedDate, $creditsRemaining = 'unlimited'));
+            Mail::to($user->email)->send(new UserReadingEmail($user, $userDetails, $formattedDate, $creditsRemaining = 10));
 
 
             return Inertia::render('Reading', [
