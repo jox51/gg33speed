@@ -22,10 +22,20 @@
         @viteReactRefresh
         @vite(['resources/js/app.jsx'])
         @inertiaHead
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16551013734">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-16551013734');
+</script>
     </head>
     <body class="font-sans antialiased">
         <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH9XT38H"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KH9XT38H"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
         @inertia
