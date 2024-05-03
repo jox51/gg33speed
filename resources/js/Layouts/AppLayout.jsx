@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { GTMProvider } from "@elgorditosalsero/react-gtm-hook";
-import ReactGA from "react-ga4";
 
 const AppLayout = ({ auth, children }) => {
     const gtmParams = {
@@ -12,8 +11,6 @@ const AppLayout = ({ auth, children }) => {
             "Conversion label": "rUbyCJepiKwZEObakdQ9",
         },
     };
-
-    ReactGA.initialize("G-1TMH444J4W");
 
     return (
         <>
