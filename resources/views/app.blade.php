@@ -32,6 +32,16 @@
 
   gtag('config', 'AW-16551013734');
 </script>
+
+<!-- Event snippet for Page view conversion page -->
+<script>
+    gtag('event', 'conversion', {
+        'send_to': 'AW-16551013734/rUbyCJepiKwZEObakdQ9',
+        'value': 1.0,
+        'currency': 'USD'
+    });
+  </script>
+  
     </head>
     <body class="font-sans antialiased">
         <!-- Google Tag Manager (noscript) -->
