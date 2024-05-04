@@ -44,7 +44,7 @@ function ReadingDetails() {
     }, [userDetails]);
 
     return (
-        <div className="flex justify-center items-center flex-col ">
+        <div className="">
             {paymentMsg ? (
                 <div className="mb-4 p-3 bg-green-200 text-green-800 rounded-md">
                     {paymentMsg} {/* Display the payment success message */}
@@ -64,7 +64,7 @@ function ReadingDetails() {
                     <DatePickerComponent />
                 </>
             ) : (
-                <div className="text-center mt-4 mb-2">
+                <div className=" mt-4 mb-2">
                     {!loading ? <DatePickerComponent /> : null}
                 </div>
             )}

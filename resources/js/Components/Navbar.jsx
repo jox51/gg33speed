@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Dialog } from "@headlessui/react";
+import { Dialog, Disclosure } from "@headlessui/react";
 import { usePage } from "@inertiajs/react";
 import { Link } from "@inertiajs/react";
 import {
@@ -46,192 +46,130 @@ export default function Navbar() {
         }
     }
 
+    function classNames(...classes) {
+        return classes.filter(Boolean).join(" ");
+    }
+
     return (
-        <header className="absolute inset-x-0 top-0 z-50 bg-gray-800 dark:bg-gray-900">
-            <nav
-                className="flex items-center justify-between p-2 lg:px-8"
-                aria-label="Global"
-            >
-                <div className="flex lg:flex-1">
-                    <Link
-                        href="/"
-                        className="-m-1.5 p-1.5 text-white dark:text-gray-300"
-                    >
-                        {/* GG33 AutoRead */}
-                        <img className="h-10 w-auto" src={Logo} alt="logo" />
-                    </Link>
-                </div>
-                <div className="flex lg:hidden">
-                    <button
-                        type="button"
-                        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                        onClick={() => setMobileMenuOpen(true)}
-                    >
-                        <span className="sr-only">Open main menu</span>
-                        <Bars3Icon
-                            className="h-6 w-6 dark:text-gray-300"
-                            aria-hidden="true"
-                        />
-                    </button>
-                </div>
-                <div className="hidden lg:flex lg:gap-x-12 ">
-                    {navigation.map((item) => (
-                        <Link
-                            key={item.name}
-                            href={item.href}
-                            className="text-sm font-semibold leading-6 text-white dark:text-gray-200 "
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            {item.name}
-                        </Link>
-                    ))}
-                </div>
-
-                <div className="hidden pr-8 lg:flex lg:flex-1 lg:justify-end ">
-                    {auth.user ? (
-                        <>
-                            <div className="hidden sm:flex sm:items-center sm:ms-6  ">
-                                <div className="ms-3 relative  ">
-                                    <Dropdown>
-                                        <Dropdown.Trigger>
-                                            <span className="inline-flex rounded-md">
-                                                <button
-                                                    type="button"
-                                                    className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 dark:bg-gray-800 dark:text-gray-100"
-                                                >
-                                                    {auth.user.name}
-
-                                                    <svg
-                                                        className="ms-2 -me-0.5 h-4 w-4"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 20 20"
-                                                        fill="currentColor"
-                                                    >
-                                                        <path
-                                                            fillRule="evenodd"
-                                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                            clipRule="evenodd"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </span>
-                                        </Dropdown.Trigger>
-
-                                        <Dropdown.Content>
-                                            <Dropdown.Link
-                                                href={route("profile.edit")}
-                                            >
-                                                Profile
-                                            </Dropdown.Link>
-                                            <Dropdown.Link
-                                                href={route("logout")}
-                                                method="post"
-                                                as="button"
-                                            >
-                                                Log Out
-                                            </Dropdown.Link>
-                                        </Dropdown.Content>
-                                    </Dropdown>
+        <Disclosure as="nav" className="w-full dark:bg-gray-900">
+            {({ open }) => (
+                <>
+                    <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex h-16 items-center justify-between">
+                            <div className="flex-shrink-0">
+                                <Link href="/">
+                                    <img
+                                        className="h-8 w-auto"
+                                        src={Logo}
+                                        alt="Your Company Logo"
+                                    />
+                                </Link>
+                            </div>
+                            <div className="sm:hidden">
+                                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white dark:text-gray-200 dark:hover:bg-gray-700">
+                                    {open ? (
+                                        <XMarkIcon
+                                            className="block h-6 w-6"
+                                            aria-hidden="true"
+                                        />
+                                    ) : (
+                                        <Bars3Icon
+                                            className="block h-6 w-6"
+                                            aria-hidden="true"
+                                        />
+                                    )}
+                                </Disclosure.Button>
+                            </div>
+                            <div className="hidden sm:flex sm:items-center sm:justify-center flex-1">
+                                <div className="flex space-x-4">
+                                    {navigation.map((item) => (
+                                        <Link
+                                            key={item.name}
+                                            href={item.href}
+                                            className={classNames(
+                                                item.current
+                                                    ? "bg-gray-900 text-white dark:bg-gray-700 dark:text-gray-200"
+                                                    : "text-gray-900 hover:bg-gray-700 hover:text-white dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white",
+                                                "px-3 py-2 rounded-md text-sm font-medium"
+                                            )}
+                                            aria-current={
+                                                item.current
+                                                    ? "page"
+                                                    : undefined
+                                            }
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    ))}
                                 </div>
                             </div>
-                        </>
-                    ) : (
-                        <>
-                            <Link
-                                href={route("login")}
-                                className="rounded-md mx-2 px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none  text-white dark:text-gray-200"
-                            >
-                                Log in
-                            </Link>
-                            <Link
-                                href={route("register")}
-                                className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] text-white dark:text-gray-200-100"
-                            >
-                                Register
-                            </Link>
-                        </>
-                    )}
-                </div>
-                {/* Dark Mode Toggle */}
-                <button
-                    onClick={toggleDarkMode}
-                    className="p-2 rounded-md focus:outline-none focus:ring focus:ring-gray-300 dark:focus:ring-gray-700"
-                >
-                    {darkMode ? (
-                        <SunIcon className="h-6 w-6 text-gray-800 dark:text-gray-200" />
-                    ) : (
-                        <MoonIcon className="h-6 w-6 text-gray-200 dark:text-gray-800" />
-                    )}
-                </button>
-            </nav>
-            <Dialog
-                as="div"
-                className="lg:hidden"
-                open={mobileMenuOpen}
-                onClose={setMobileMenuOpen}
-            >
-                <div className="fixed inset-0 z-50" />
-                <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-800 dark:bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                    <div className="flex items-center justify-between">
-                        <a href="#" className="-m-1.5 p-1.5">
-                            <span className="sr-only">GG33 Auto Read</span>
-                            {/* <img className="h-16 w-auto" src={Logo} alt="" /> */}
-                        </a>
-                        <button
-                            type="button"
-                            className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            <span className="sr-only">Close menu</span>
-                            <XMarkIcon
-                                className="h-6 w-6 text-white dark:text-gray-200"
-                                aria-hidden="true"
-                            />
-                        </button>
-                    </div>
-                    <div className="mt-6 flow-root">
-                        <div className="-my-6 divide-y divide-gray-500/10">
-                            <div className="space-y-2 py-6">
-                                {navigation.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        href={item.href}
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-white dark:text-gray-200 font-semibold leading-7 hover:bg-gray-50"
-                                        onClick={() => setMobileMenuOpen(false)}
-                                    >
-                                        {item.name}
-                                    </Link>
-                                ))}
-                            </div>
-                            <div className="py-6">
+                            {/* Authentication Links */}
+                            <div className="flex items-center">
                                 {auth.user ? (
-                                    <Link
-                                        href={route("dashboard")}
-                                        className="rounded-md px-3 py-2 text-white dark:text-gray-200 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none"
-                                    >
-                                        Dashboard
-                                    </Link>
+                                    <div className="hidden sm:flex sm:items-center">
+                                        <button
+                                            type="button"
+                                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-900 bg-slate-100 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 dark:text-gray-200 dark:bg-gray-800 dark:hover:text-white"
+                                        >
+                                            {auth.user.name}
+                                            {/* User dropdown logic here */}
+                                        </button>
+                                    </div>
                                 ) : (
                                     <>
                                         <Link
                                             href={route("login")}
-                                            className="rounded-md px-3 py-2 text-white dark:text-gray-200 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none "
+                                            className="hidden sm:flex rounded-md mx-2 px-3 py-2 text-gray-900 hover:bg-gray-700 hover:text-white transition ease-in-out duration-150 focus:outline-none dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Log in
                                         </Link>
                                         <Link
                                             href={route("register")}
-                                            className="rounded-md px-3 py-2 text-white dark:text-gray-200 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20]"
+                                            className="hidden sm:flex rounded-md px-3 py-2 text-gray-900 hover:bg-gray-700 hover:text-white transition ease-in-out duration-150 focus:outline-none dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Register
                                         </Link>
                                     </>
                                 )}
                             </div>
+
+                            {/* DARK MODE TOGGLE */}
+                            <button
+                                onClick={toggleDarkMode}
+                                className="p-2 rounded-md focus:outline-none focus:ring focus:ring-gray-300 dark:focus:ring-gray-700"
+                            >
+                                {darkMode ? (
+                                    <SunIcon className="h-6 w-6 text-gray-800 dark:text-gray-200" />
+                                ) : (
+                                    <MoonIcon className="h-6 w-6 text-gray-400 dark:text-gray-800" />
+                                )}
+                            </button>
                         </div>
                     </div>
-                </Dialog.Panel>
-            </Dialog>
-        </header>
+                    <Disclosure.Panel className="sm:hidden">
+                        <div className="px-2 pt-2 pb-3 space-y-1">
+                            {navigation.map((item) => (
+                                <Disclosure.Button
+                                    key={item.name}
+                                    as={Link}
+                                    href={item.href}
+                                    className={classNames(
+                                        item.current
+                                            ? "bg-gray-900 text-white"
+                                            : "text-gray-400 hover:bg-gray-800 hover:text-white",
+                                        "block px-3 py-2 rounded-md text-base font-medium"
+                                    )}
+                                    aria-current={
+                                        item.current ? "page" : undefined
+                                    }
+                                >
+                                    {item.name}
+                                </Disclosure.Button>
+                            ))}
+                        </div>
+                    </Disclosure.Panel>
+                </>
+            )}
+        </Disclosure>
     );
 }

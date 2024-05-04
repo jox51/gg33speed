@@ -37,14 +37,16 @@ const DatePickerComponent = () => {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center">
-            <Datepicker
-                asSingle={true}
-                useRange={false}
-                displayFormat={"MM/DD/YYYY"}
-                value={value}
-                onChange={handleValueChange}
-            />
+        <div className="flex flex-col">
+            <div className="flex flex-col justify-center space-between w-full h-lg text-slate-500">
+                <Datepicker
+                    asSingle={true}
+                    useRange={false}
+                    displayFormat={"MM/DD/YYYY"}
+                    value={value}
+                    onChange={handleValueChange}
+                />
+            </div>
             <button
                 type="button"
                 onClick={handleDateSubmit}
