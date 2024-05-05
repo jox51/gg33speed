@@ -20,7 +20,7 @@ export const LandingTestimonialGrid = ({
     featuredTestimonial,
     withBackground,
     variant = "primary",
-    withBackgroundGlow = false,
+    withBackgroundGlow = true,
     backgroundGlowVariant = "primary",
 }) => {
     return (
@@ -28,7 +28,7 @@ export const LandingTestimonialGrid = ({
             className={clsx(
                 "w-full flex flex-col justify-center items-center gap-8 py-12 lg:py-16",
                 withBackground && variant === "primary"
-                    ? "bg-primary-100/20 dark:bg-primary-900/10"
+                    ? "bg-primary-100/20 dark:bg-gray-800 dark:text-slate-200"
                     : "",
                 withBackground && variant === "secondary"
                     ? "bg-secondary-100/20 dark:bg-secondary-900/10"

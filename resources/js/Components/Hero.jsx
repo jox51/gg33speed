@@ -4,6 +4,7 @@ import { LandingProductHuntAward } from "@/Components/landing/social-proof/Landi
 import { LandingSocialProof } from "@/Components/landing/social-proof/LandingSocialProof";
 
 import { Button } from "@/Components/shared/ui/button";
+import DemoVideo from "@/videos/demo-video.mp4";
 
 export default function Hero() {
     const avatarItems = [
@@ -22,33 +23,34 @@ export default function Hero() {
     ];
 
     return (
-        <div className="w-full shadow-md">
+        <div className="flex items-center justify-center shadow-md w-full">
             <LandingPrimaryVideoCtaSection
-                title="Time to level up ↑ your front-end skills"
-                description="Elevate your development game and achieve more with our awesome front-end learning center. It's dynamic, beginner-friendly, and designed with you in mind!"
+                title="Unlock the Cheat Codes"
+                description="  Discover your unique numerological profile and gain deep insights into your life with an official GG33
+                approved quick reading."
                 autoPlay
                 controls={false}
-                videoPosition="center"
-                videoSrc="https://cache.shipixen.com/features/11-pricing-page-builder.mp4"
+                videoPosition="right"
+                videoSrc={DemoVideo}
                 withBackground
                 variant="secondary"
-                leadingComponent={<LandingProductHuntAward />}
+                // leadingComponent={<LandingProductHuntAward />}
             >
                 <Button size="xl" variant="secondary" asChild>
-                    <a href="#">Get started</a>
+                    <a href="/register">Get started</a>
                 </Button>
 
                 <Button size="xl" variant="outlineSecondary">
-                    <a href="#">Learn More</a>
+                    <a href="#features">Learn More</a>
                 </Button>
 
-                <LandingDiscount
+                {/* <LandingDiscount
                     discountValueText="$50 off"
                     discountDescriptionText="for the first 20 customers (5 left)"
-                />
+                /> */}
 
                 <LandingSocialProof
-                    className="w-full mt-12"
+                    className="max-w-full mt-12"
                     showRating
                     numberOfUsers={12000}
                     suffixText="happy users"

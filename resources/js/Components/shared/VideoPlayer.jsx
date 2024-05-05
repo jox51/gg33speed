@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 export const VideoPlayer = ({
     autoPlay = true,
     controls = true,
-    maxWidth = "700px",
+    maxWidth = "200px",
     poster,
     src,
     width,
@@ -40,7 +40,7 @@ export const VideoPlayer = ({
             style={{ maxWidth }}
             className={cn(className, "rounded-lg overflow-hidden shadow-md")}
         >
-            <div className="relative bg-white dark:bg-black rounded-md">
+            <div className="relative bg-white w-sm dark:bg-black rounded-md">
                 {!isPlaying ? (
                     <button
                         onClick={togglePlay}

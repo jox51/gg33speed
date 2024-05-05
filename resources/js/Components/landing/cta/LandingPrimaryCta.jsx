@@ -218,7 +218,7 @@ export const LandingPrimaryVideoCtaSection = ({
     textPosition = "left",
     videoSrc,
     videoPoster,
-    videoPosition = "right",
+    videoPosition = "center",
     videoMaxWidth = "none",
     videoShadow = "hard",
     autoPlay = false,
@@ -233,7 +233,7 @@ export const LandingPrimaryVideoCtaSection = ({
     return (
         <section
             className={clsx(
-                "w-full flex flex-col justify-center items-center gap-8 py-12 lg:py-16",
+                " flex flex-col justify-center items-center w-full gap-8 py-12 lg:py-16",
                 withBackground && variant === "primary"
                     ? "bg-primary-100/20 dark:bg-primary-900/10"
                     : "",
@@ -248,7 +248,7 @@ export const LandingPrimaryVideoCtaSection = ({
                 className={clsx(
                     "w-full p-6 flex flex-col gap-8 relative",
                     videoPosition === "center"
-                        ? "container-narrow"
+                        ? "container-wide w-screen"
                         : "max-w-full container-wide grid lg:grid-cols-2 items-center",
                     textPosition === "center" ? "items-center" : "items-start",
                     innerClassName
@@ -349,7 +349,7 @@ export const LandingPrimaryTextCtaSection = ({
     descriptionComponent,
     leadingComponent,
     footerComponent,
-    textPosition = "center",
+    textPosition = "right",
     withBackground = false,
     variant = "primary",
 }) => {
@@ -370,7 +370,7 @@ export const LandingPrimaryTextCtaSection = ({
                 className={clsx(
                     "w-full p-6 flex flex-col gap-8 relative",
                     textPosition === "center"
-                        ? "container-narrow"
+                        ? "container-wide"
                         : "max-w-full container-wide",
                     textPosition === "center" ? "items-center" : "items-start",
                     innerClassName

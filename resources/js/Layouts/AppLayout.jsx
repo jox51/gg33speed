@@ -15,7 +15,7 @@ const AppLayout = ({ auth, children }) => {
     return (
         <>
             <GTMProvider state={gtmParams}>
-                <div className="flex flex-col max-w-screen justify-center px-20 bg-slate-50 dark:bg-slate-700 gap-4">
+                <div className="flex flex-col items-center max-w-full justify-center px-20 bg-slate-50 dark:bg-slate-700 gap-4">
                     <Navbar auth={auth} />
                     <main>{children}</main>
                     <Footer />

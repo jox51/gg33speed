@@ -37,8 +37,8 @@ const DatePickerComponent = () => {
     }
 
     return (
-        <div className="flex flex-col">
-            <div className="flex flex-col justify-center space-between w-full h-lg text-slate-500">
+        <div className="flex flex-col justify-center items-center">
+            <div className=" text-slate-500">
                 <Datepicker
                     asSingle={true}
                     useRange={false}

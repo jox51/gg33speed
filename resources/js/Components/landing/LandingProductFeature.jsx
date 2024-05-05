@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Image from "@/Components/shared/Image";
-import { GlowBg } from "@/components/shared/ui/glow-bg";
+import { GlowBg } from "@/Components/shared/ui/glow-bg";
 
 /**
  * A component meant to be used in the landing page.
@@ -26,10 +26,10 @@ export const LandingProductFeature = ({
     imageShadow = "hard",
     zoomOnHover = true,
     minHeight = 350,
-    withBackground = false,
-    withBackgroundGlow = false,
-    variant = "primary",
-    backgroundGlowVariant = "primary",
+    withBackground = true,
+    withBackgroundGlow = true,
+    variant = "secondary",
+    backgroundGlowVariant = "secondary",
 }) => {
     return (
         <section

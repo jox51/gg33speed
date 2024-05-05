@@ -44,7 +44,7 @@ function ReadingDetails() {
     }, [userDetails]);
 
     return (
-        <div className="">
+        <div>
             {paymentMsg ? (
                 <div className="mb-4 p-3 bg-green-200 text-green-800 rounded-md">
                     {paymentMsg} {/* Display the payment success message */}
@@ -55,7 +55,7 @@ function ReadingDetails() {
             {(!loading && auth.user && auth.user.credits > 0) ||
             (!loading && auth.user && auth.user.is_admin) ? (
                 <>
-                    <div className="text-center mt-4 mb-2">
+                    <div className="text-center mt-4 mb-2  ">
                         <span className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-2 rounded-lg">
                             Credits:{" "}
                             {auth.user.is_admin ? "Admin" : auth.user.credits}
@@ -105,7 +105,7 @@ function ReadingDetails() {
             </div>
 
             {userDetails && !loading && (
-                <div className="bg-blue-200 text-blue-900 text-center p-4 rounded-lg mt-4 max-w-4xl">
+                <div className="mx-auto bg-blue-200 text-blue-900 text-center p-4 rounded-lg mt-4 max-w-4xl">
                     <p>
                         <span>
                             <GiAbstract041
