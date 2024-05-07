@@ -12,9 +12,11 @@ import { useLoadingStore } from "@/store/loadingStore";
 
 function Card1({ heading, description, icon, className }) {
     return (
-        <div className={`flex gap-4 rounded-xl shadow-sm p-6 ${className}`}>
+        <div
+            className={`flex gap-4 rounded-xl shadow-sm p-6 flex-wrap min-w-[50vw]  md:min-w-full sm:min-w-[20vw]   ${className}`}
+        >
             <div className="min-w-max text-4xl">{icon}</div>
-            <div className="space-y-2">
+            <div className="space-y-2 flex-grow">
                 <h3 className="text-[22px] font-semibold">{heading}</h3>
                 <p className="leading-8 text-gray-500 font-normal">
                     {description}
@@ -72,30 +74,30 @@ function ReadingDetails() {
             {/* Show loading indicator only when loading is true */}
             {loading && <BallTriangle height={80} width={80} />}
 
-            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 p-3 sm:p-8">
+            <div className="grid gap-4 px-4 md:px-8 py-4 md:py-8 grid-cols-1 sm:grid-cols-2">
                 {/* Numerology Cards */}
                 {userDetails && !loading ? (
                     <>
                         <Card1
-                            className="bg-green-100"
+                            className="bg-green-100 "
                             heading={`Lifepath Number ${userDetails.lifepath}`}
                             description={userDetails.reading.Lifepath}
                             icon={userDetails.lifepathEmoji}
                         />
                         <Card1
-                            className="bg-[#fefaf0]"
+                            className="bg-[#fefaf0] "
                             heading={`Bornday Number ${userDetails.bornday}`}
                             description={userDetails.reading.Bornday}
                             icon={userDetails.borndayEmoji}
                         />
                         <Card1
-                            className="bg-[#fefaf0]"
+                            className="bg-[#fefaf0] "
                             heading={`Chinese Zodiac: ${userDetails.zodiac}`}
                             description={userDetails.reading.ChineseZodiac}
                             icon={userDetails.zodiacEmoji}
                         />
                         <Card1
-                            className="bg-green-100"
+                            className="bg-green-100 "
                             heading={`Western Zodiac: ${userDetails.westernZodiac}`}
                             description={userDetails.todaysHoroscope}
                             icon={userDetails.westZodiacEmoji}
