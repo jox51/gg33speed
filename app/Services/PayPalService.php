@@ -34,7 +34,7 @@ class PayPalService {
 
   public function handlePayment() {
 
-    $order = $this->createOrder(35, 'USD');
+    $order = $this->createOrder(28, 'USD');
 
     $orderLinks = collect($order->links);
 
