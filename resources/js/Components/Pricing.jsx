@@ -13,7 +13,7 @@ export default function Pricing() {
     const pricingPlans = [
         {
             title: "One-Time Reading",
-            price: "$17",
+            price: "$8",
             features: [
                 "Quick numerology reports",
                 "Reports emailed to you",
